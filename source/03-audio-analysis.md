@@ -67,6 +67,54 @@ This function is not good for audio signals.
 This function is not good for signals with a large amount of noise.
 
 
+## Audio Features
+
+### Brightness
+
+Brightness either alludes to a solitary note or harmony played at a specific time, or to a tune as entirety,
+at the point when the splendor, everything being equal/harmonies is summarized. In setting of a note or harmony, splendor
+would be a discrete occasion, where as the brigthness of a tune would be a worldwide element.
+Brightness is normally characterized by a note's pitch, e.g., a C' (played in the principal octave) is thought of as less splendid than a C" (played in the subsequent octave). Albeit musically talking that is
+a similar note (same key), it has an alternate splendor. Similar applies to harmonies.
+Brilliance is additionally to some degree associated with harmonicity - significant harmonies are generally thought of
+to be „cheerful", which overall likewise prompts a sensation of expanded brilliance, where as minor
+harmonies are depicted as „sad" or „melancholic", providing the audience with the sensation of diminished
+brilliance.
+Actually talking, „brightness portrays the unearthly dispersion of frequencies and
+portrays whether a sign is overwhelmed by low or high frequencies, individually. A sound
+becomes more splendid as the high-recurrence content turns out to be more predominant and the low-recurrence
+content turns out to be less predominant."
+As far as MIDI, the splendor is straightforwardly associated with the pitch of a note, which is a worth
+somewhere in the range of 0 and 127.
+
+### Loudness
+Loudness essentially depicts how clearly a note has been played. Loudness makes characteristical
+spikes in waveforms (sound), or influences the volume quality of MIDI notes.
+Over the previous years, music makers have combat in an alleged tumult war [22], attempting to
+make tunes with an enormous and serious sound. This lead to more thick and smaller waveforms,
+making it much harder to effectively dissect sound records.
+As far as representation, tumult can be utilized to influence the power of tones or visual
+occasions
+
+### Tonality
+The resonance or key portrays which notes are utilized inside a song. In spite of the fact that resonances hold a
+substantial arrangement of notes, most notes are essential for a few resonances. Also, due to compositional
+opportunity, the resonance can change whenever inside the tune, and it isn't said that assuming a melody is
+written in a specific key, that it just holds back notes from that specific scale. This is pretty
+normal particularly in Jazz and Latin music, and makes it much harder to distinguish the right
+resonance while dissecting a melody.
+Like brilliance and harmonicity, resonances have a specific inclination joined, which can
+be either happy or melancholic. This makes resonance identification an intriguing assignment while attempting
+to picture bits of music
+
+### Tempo / Beats per Minute
+The beat of a tune is a decent base for changing the overall style of any melodic representation.
+Quicker melodies transport a sensation of energy or aggressivity, where as more slow tunes normally
+actuate a laid-back and repressed feeling.
+BPM represents beats each moment, which is a mathematical worth that portrays the number of quarter notes each moment can be played during a tune.
+
+
+
 ## Extracting Audio Features
 
 Digital analysis of audio signals emerged with the advent of the digital age. Julius O. Smith III can be considered one of the pioneers, who did significant work in the field of physical signal analysis and processing. Today, digital audio analysis is used in DAWs (Digital Audio Workstation), DJ programs and AI voice assistants. The main distinction is between real-time and look-ahead analysis, usually a mix of both systems is used.

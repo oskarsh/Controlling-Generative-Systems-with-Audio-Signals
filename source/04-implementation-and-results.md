@@ -89,7 +89,111 @@ Finally there are some global lights to illuminate the scene.
 
 ![Unity3D Scene Hierachy](resources/unity-layers.png){ width=250px }
 
-### Model generation
+### Generators
+
+Each layer does feature its own Generator Script. This setup makes sure that each layer is rendered in the right position and does feature the right assets and models. In general there are 5 Layers each assigned to its own Generators. The Generator Script in itself is simple and generic. It exposes a list which can be filled in the Unity Editor UI with GameObjects. When initialized one random GameObject from that list is choosen and displayed. While its technically possible to assign every GameObject to a certain Generator it is advised to reserve the upper Layers for smaller Objects which can be easily layered above the rest. The Layers are stacked across the Z axis to minize clipping.
+
+Here is the code for the Generator Script:
+
+```c#
+void AddRandomGameObject()
+{
+	var r = Random.Range(0, GameObjects.Length);
+    var tp = transform.position;
+    var position = new Vector3(tp.x,tp.y, tp.z)
+	GameObject gb = GameObjects[r];
+	var randomObj = GameObject.Instantiate(gb, position, Quaternion.identity);
+	randomObj.transform.parent = gameObject.transform;
+}
+```
+
+\pagebreak 
+
+### Tunnel
+
+The so called tunnel is one of the main elements in the scene. It builds the base of the scene by providing an ever changing background. In itself it layers 4 Textures and moves them forward or backwards following a cylindrical shape. It features properties like movement speed, rotation and twist per each layer. One of the most used feature is the dynamic texture assignment via an API. While it is possible to control each layer on its own, the global control does unify most of them. Similar to the properties on each layer there is a global speed and rotation next to a global brightness.
+
+On the application start it slowly gets brighter. This is due to the fact to hide the adjusting phase of the audio analysis. When starting out the maximum frequency could not be determined yet thus the normalized values do not take the whole spectrum into account. This usually shows itself in really shaky values which tend to jump between high and low.
+
+
+![Screenshot of the background tunnel](resources/tunnel.png){ width=500px }
+
+\pagebreak
+
+### Fractals
+
+The mandalas are used as a secondary visual. These are meant to be layered on top of Layer 1 and act as a backdrop for the rest of the scene. These mandalas are generated with p5.js and included in the final project.
+
+ p5.js is free and open-source javascript library that runs on the web. Generally p5 is used for experimental web projects, data visualizations and generative art.
+
+This is the code to generate the mandalas
+
+```javascript
+const makeMandala = (position) => {
+  const layers = layerConstructors.map((lcon) => {
+    let picker = random(1);
+    const draw = picker > lcon.weight;
+    return lcon.init({
+      position,
+      draw,
+    });
+  });
+  return layers;
+};
+```
+
+This makeMandala function does generate a random number between 0 and 1. This value is then compared against a weight. This weight defines the likely hood that a specific layer is choosen. This is controlled randomness 
+
+Each layer constructor does contain a name, init and weight field. The name does make the debugging process easier by providing a human readable identifier for the drawn shape. The init function does contain the actual computation of the layers. This can be the drawing of a hexagon, a line or a group of squares. The weight indicates the likely hood that this particular shape is choosen as explained above.
+
+Here is the code for a basic shape that either draws a hexagon, a circle or square background.
+
+```javascript
+const layerConstructors = [
+  {
+    name: "Shape",
+    init: (props) =>
+      outlineShape({
+        ...props,
+        ...setState(state),
+      }),
+    weight: 0.3,
+  },
+];
+```
+
+
+
+This relatively simple code is able to generate an endless amount of fractals with a given style. This style is defined by the weight of each layer, the init function and the color palette. In itself this is a generative system which is used to generate parts for another generative system. In order to save on performance these visuals are rendered before hand and are saved as an Image. Displaying an Image does come with a much lower performance overhead then creating the image in realtime. 
+
+![rendering of the isolated fractals](resources/mandalas.png){ width=500px }
+
+\pagebreak
+
+Each of these layers is rendered with a transparent background and does contain only black and white colors. This allows to easily re color the fractals in the final application to match the general theme better. 
+
+![layering the fractals with the background](resources/layered-fractal.png){ width=400px }
+
+![regenerating the layers and background with the background](resources/layered-fractal-2.png){ width=400px }
+
+\pagebreak
+
+#### Model Creation 
+
+![Wireframe model of a Head](resources/head-1.png){ width=250px }
+
+#### Secondary Visual
+
+
+
+
+#### Particle System
+
+#### Background Graphics
+
+
+![Wireframe model of a Head](resources/apgaen-1.png){ width=550px }
+
 
 ### Generative Camera movements
 
