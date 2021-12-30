@@ -1,8 +1,10 @@
 \pagenumbering{gobble}
 
-# Controlling Generative Systems with Audio Signals {-}
+# Controlling Generative Systems 
 
-![](resources/aperture.png){ width=100px }
+# with Audio Signals {-}
+
+![](resources/fractal-p5.png){ width=100px }
 
 Oskar Schachtschneider
 
